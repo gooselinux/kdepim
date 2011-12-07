@@ -1,0 +1,24 @@
+diff -Naur kdepim-4.1.80/kleopatra/kgpgconf/CMakeLists.txt kdepim-4.1.80.libqgpgme-link-fix/kleopatra/kgpgconf/CMakeLists.txt
+--- kdepim-4.1.80/kleopatra/kgpgconf/CMakeLists.txt	2008-11-04 18:12:56.000000000 +0100
++++ kdepim-4.1.80.libqgpgme-link-fix/kleopatra/kgpgconf/CMakeLists.txt	2008-11-28 20:28:00.000000000 +0100
+@@ -21,7 +21,7 @@
+ kde4_add_app_icon(_kgpgconf_SRCS "${KDE4_ICON_DIR}/oxygen/*/apps/preferences-desktop-cryptography.png")
+ 
+ kde4_add_executable(kgpgconf ${_kgpgconf_SRCS} )
+-target_link_libraries(kgpgconf ${QGPGME_LIBRARIES} ${KDE4_KDEUI_LIBS} )
++target_link_libraries(kgpgconf ${KDE4_QGPGME_LIBRARY} ${KDE4_KDEUI_LIBS} )
+ 
+ install(TARGETS kgpgconf ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+diff -Naur kdepim-4.1.80/libkleo/CMakeLists.txt kdepim-4.1.80.libqgpgme-link-fix/libkleo/CMakeLists.txt
+--- kdepim-4.1.80/libkleo/CMakeLists.txt	2008-11-04 18:12:56.000000000 +0100
++++ kdepim-4.1.80.libqgpgme-link-fix/libkleo/CMakeLists.txt	2008-11-28 18:56:14.000000000 +0100
+@@ -108,7 +108,7 @@
+ if(WIN32)
+ target_link_libraries(kleo ${kleo_LIB_LIBS}  ${GPGME_VANILLA_LIBRARIES} )
+ else(WIN32)
+-target_link_libraries(kleo ${kleo_LIB_LIBS} )
++target_link_libraries(kleo ${kleo_LIB_LIBS} ${KDE4_QGPGME_LIBRARY} )
+ endif(WIN32)
+ set_target_properties(kleo PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION} )
+ install(TARGETS kleo ${INSTALL_TARGETS_DEFAULT_ARGS})
